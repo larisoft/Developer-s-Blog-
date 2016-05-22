@@ -1,0 +1,325 @@
+/*!
+ * Start Bootstrap - Landing Page Bootstrap Theme (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+ 
+ .head-title{
+ 	text-align:center;
+ 	font-size:120%;
+ }
+ footer{
+ background-color:black;
+ margin-top:30px;
+ }
+ 
+ .screen-shot{ 
+ 	width:24%;
+ }
+ 
+ .asset-title{
+ height:30px;
+ }
+ 
+ 
+ .giant-text{ 
+ font-size:100px;
+ text-align:center;
+ }
+ 
+ .edit-button  {
+ color:#F8ECE0;
+ float: right;  
+ }
+ 
+ .paragraph{ 
+ 	margin-bottom:10px;
+ 	text-align:justify;
+ 	
+ }
+.page{
+	
+	background-color:#F8ECE0;
+	padding:10px;
+}
+table{
+	
+	width:100%;
+}
+
+tr{ 
+	line-height:25px;
+	min-height:25px;
+	height:25px;
+	width:inherit;
+	
+}
+
+.app-title{
+	text-shadow:aqua;
+	text-align:center;
+}
+
+.app-description{
+	padding:10px;
+	width:inherit;
+}
+
+
+
+.head-title{
+	font-weight: 10px;
+	font-size:200%;
+	font-stretch:expanded;
+	background-color:#5cb85c;
+	color:white;
+	text-align:center;
+	padding:10px;
+}
+
+td{
+	padding:10px;
+}
+
+.bar{
+	margin-top:10px;
+	width:100%;
+	height:20px;
+	background-color:#BDBDBD;
+}
+
+.progressBar{ 
+	width:40%;
+	height:20px;
+	background-color:green;
+}
+
+.progressText{
+	
+	color:white;
+	text-align:center;
+	position: absolute;
+	width:inherit;
+	z-index:2;
+}
+
+
+
+.file-container{
+	
+	padding:20px;
+	margin-top:10px;
+	width:80%;
+}
+
+.file-text{
+	color:black;
+	font-weight: 1px;
+	text-align: center; 
+	display:table-cell; 
+	vertical-align: middle;
+	z-index: -1;
+}
+.transparent-file{ 
+	height:150px;
+	 filter: alpha(opacity=0); 
+	opacity: 0;   	   
+	width:inherit;
+	position:absolute;  
+	z-index:2;
+	
+}	
+
+.preview-file{ 
+	height:150px; 
+	content:"120mb file";
+	display:table;
+	width:100%;
+	height:150px;
+	overflow:hidden;
+	background-color:#F2F2F2;
+	margin-top:5px;
+	color:black;
+}	
+
+
+
+.empty-file{ 
+	height:150px;
+	background: url(../img/upload_icon.png) no-repeat center center; 
+	background-size: contain;  
+	background-color: #F2F2F2;
+	color:#F2F2F2;
+}
+.responsive-header{ 
+	background-color:#00703c;
+	width:100%;
+	color:white;  
+	position: fixed;
+	top:0px;
+	z-index: 1000;
+}
+
+
+.first_item{ 
+	 margin-top:100px;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif; 
+}
+a,li{
+	color:white;
+}
+.topnav { 
+}
+
+.lead { 
+}
+
+.intro-header {
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 50px;
+    text-align: center;
+    color: #f8f8f8;
+    background: url(../img/intro-bg.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.intro-message {
+    position: relative;
+    padding-top: 20%;
+    padding-bottom: 20%;
+}
+
+.intro-message > h1 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 5em;
+}
+
+.intro-divider {
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.intro-message > h3 {
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+}
+
+@media(max-width:767px) {
+    .intro-message {
+        padding-bottom: 15%;
+    }
+
+    .intro-message > h1 {
+        font-size: 3em;
+    }
+
+    ul.intro-social-buttons > li {
+        display: block;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    ul.intro-social-buttons > li:last-child {
+        margin-bottom: 0;
+    }
+
+    .intro-divider {
+        width: 100%;
+    }
+}
+
+.network-name {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.content-section-a {
+    padding: 50px 0;
+    background-color: #f8f8f8;
+}
+
+.content-section-b {
+    padding: 50px 0;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.section-heading {
+    margin-bottom: 30px;
+}
+
+.section-heading-spacer {
+    float: left;
+    width: 200px;
+    border-top: 3px solid #e7e7e7;
+}
+
+.banner {
+    padding: 100px 0;
+    color: #f8f8f8;
+    background: url(../img/banner-bg.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.banner h2 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 3em;
+}
+
+.banner ul {
+    margin-bottom: 0;
+}
+
+.banner-social-buttons {
+    float: right;
+    margin-top: 0;
+}
+
+@media(max-width:1199px) {
+    ul.banner-social-buttons {
+        float: left;
+        margin-top: 15px;
+    }
+}
+
+@media(max-width:767px) {
+    .banner h2 {
+        margin: 0;
+        text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+        font-size: 3em;
+    }
+
+    ul.banner-social-buttons > li {
+        display: block;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    ul.banner-social-buttons > li:last-child {
+        margin-bottom: 0;
+    }
+}
+
+footer {
+	margin-top:40px;
+    padding: 30px; 
+    color:white; 
+	background-color:#00703c;
+}
+
+p.copyright {
+    margin: 15px 0 0;
+}

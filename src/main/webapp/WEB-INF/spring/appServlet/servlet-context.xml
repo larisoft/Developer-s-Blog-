@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	
+	
+    <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <beans:property name="url" value="jdbc:mysql://localhost:3306/larisoft_apps" />
+        <beans:property name="username" value="root" />
+        <beans:property name="password" value="" />
+    </beans:bean>
+    
+    <beans:bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <beans:property name="maxUploadSize" value="10000000"/>
+    </beans:bean>
+	
+	
+    <!-- Hibernate 4 SessionFactory Bean definition -->
+    <beans:bean id="hibernate4AnnotatedSessionFactory"
+        class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <beans:property name="dataSource" ref="dataSource" />
+        <beans:property name="annotatedClasses">
+            <beans:list>
+                <beans:value>com.larisoft.crackedbytes_.portfolio.Model.App</beans:value>
+                <beans:value>com.larisoft.crackedbytes_.portfolio.Model.Platform</beans:value>
+                <beans:value>com.larisoft.crackedbytes_.portfolio.Model.Category</beans:value>
+                <beans:value>com.larisoft.crackedbytes_.Shared.Model.Asset</beans:value>
+                <beans:value>com.larisoft.crackedbytes_.blog.Model.Article</beans:value>
+                <beans:value>com.larisoft.crackedbytes_.User.Model.User</beans:value>
+                <beans:value>com.larisoft.crackedbytes_.bug.Model.Bug</beans:value>
+                <beans:value>com.larisoft.crackedbytes_.Shared.Model.Comment</beans:value>
+                <beans:value>com.larisoft.crackedbytes_.Shared.Model.ContentAssetMapping</beans:value>
+                <beans:value>com.larisoft.crackedbytes_.Shared.Model.Message</beans:value>
+            </beans:list>
+        </beans:property>
+        <beans:property name="hibernateProperties">
+            <beans:props>
+                <beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
+                </beans:prop>
+                <beans:prop key="hibernate.show_sql">true</beans:prop>
+            </beans:props>
+        </beans:property>
+    </beans:bean>
+	<context:component-scan base-package="com.larisoft.crackedbytes_" />
+	
+	<!-- article beans -->
+	<beans:bean id="articleDAO" class="com.larisoft.crackedbytes_.blog.DAO.ArticleDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+	</beans:bean>
+	
+	<beans:bean id="articleService" class="com.larisoft.crackedbytes_.blog.Service.ArticleServiceImpl">
+		<beans:property name="articleDao" ref="articleDAO"/>
+	</beans:bean>
+	
+	<!-- portfolio beans -->
+	<beans:bean id="appDAO"  class="com.larisoft.crackedbytes_.portfolio.DAO.AppDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+	</beans:bean>
+	
+	<beans:bean id="appService" class="com.larisoft.crackedbytes_.portfolio.Service.AppServiceImpl">
+	<beans:property name="appDao" ref="appDAO"/>
+	</beans:bean>
+	
+	<beans:bean id="categoryDAO" class="com.larisoft.crackedbytes_.portfolio.DAO.CategoryDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+	</beans:bean>
+	
+	<beans:bean id="categoryService" class="com.larisoft.crackedbytes_.portfolio.Service.CategoryServiceImpl">
+		<beans:property name="categoryDao" ref="categoryDAO"/>
+	</beans:bean>
+	
+	<beans:bean id="platformDAO" class="com.larisoft.crackedbytes_.portfolio.DAO.PlatformDAOImpl">
+	<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+	</beans:bean>
+	
+	<beans:bean id="platformService" class="com.larisoft.crackedbytes_.portfolio.Service.PlatformServiceImpl">
+	 <beans:property name="platformDao" ref="platformDAO"/>
+	</beans:bean>
+	
+	<beans:bean id="assetDao" class="com.larisoft.crackedbytes_.Shared.DAO.AssetDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+	</beans:bean>
+	
+	
+	<beans:bean id="assetService" class="com.larisoft.crackedbytes_.Shared.Service.AssetServiceImpl">
+		<beans:property name="assetDao" ref="assetDao"/>
+	</beans:bean>
+	
+	<beans:bean id="userDao" class="com.larisoft.crackedbytes_.User.UserDAO.UserDaoImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+	</beans:bean>
+	
+	<beans:bean id="userService" class="com.larisoft.crackedbytes_.User.Service.UserServiceImpl">
+		<beans:property name="userDao" ref="userDao"/>
+	</beans:bean>
+	
+	<beans:bean id="bugDao" class="com.larisoft.crackedbytes_.bug.Dao.BugDaoImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+	</beans:bean>
+	 
+	<beans:bean id="bugService" class="com.larisoft.crackedbytes_.bug.Service.BugServiceImpl">
+		<beans:property name="bugDao" ref="bugDao"/>
+	</beans:bean>
+	
+	<beans:bean id="messageDao" class="com.larisoft.crackedbytes_.Shared.DAO.MessageDaoImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+	</beans:bean>
+	
+	<beans:bean id="messageService" class="com.larisoft.crackedbytes_.Shared.Service.MessageServiceImpl">
+		<beans:property name="messageDao" ref="messageDao"/>
+	</beans:bean>
+	 
+	<context:component-scan base-package="com.larisoft.crackedbytes_"></context:component-scan>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />  
+	</beans:bean>
+
+	<beans:bean id="mapDao" class="com.larisoft.crackedbytes_.Shared.DAO.ContentAssetMappingDaoImpl">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />  
+	</beans:bean>	
+	
+	<beans:bean id="contentAssetMappingService" class="com.larisoft.crackedbytes_.Shared.Service.ContentAssetMappingServiceImpl">
+		<beans:property name="contentAssetMappingDao" ref="mapDao"/>
+	</beans:bean>
+	
+	<beans:bean id="commentDao" class="com.larisoft.crackedbytes_.Shared.DAO.CommentDaoImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+	</beans:bean>
+	
+	<beans:bean id="commentService" class="com.larisoft.crackedbytes_.Shared.Service.CommentServiceImpl">
+		<beans:property name="commentDao" ref="commentDao"/>
+	</beans:bean>
+</beans:beans>
